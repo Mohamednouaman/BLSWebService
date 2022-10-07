@@ -45,5 +45,12 @@ public class WebServiceController {
 		return clients;
 	}
 
+	@GetMapping("/helper/removeClient/{id}")
+	public void removeClient(@PathVariable int id){
+
+		clientService.removeClient(id);
+
+	}
+
 
 }
