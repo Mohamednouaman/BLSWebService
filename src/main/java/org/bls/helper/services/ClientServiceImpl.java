@@ -28,7 +28,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ClientServiceImpl implements IClientService {
 
 
-    private static final String excelFilePath = "client-data.xls";
+    private static final String excelFilePath = "client-info.xls";
     private static final String sheetName = "sheet.xls";
 
 
