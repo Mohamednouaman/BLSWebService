@@ -9,7 +9,7 @@ public interface IClientService {
          boolean addClient(Client client);
          void removeClient(int id);
 
-         Client  getClientById(int id);
+         //Client  getClientById(int id);
 
          Client getClientByLastName(String lastName);
 
