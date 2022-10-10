@@ -5,7 +5,6 @@ import org.bls.helper.bo.Client;
 import java.util.List;
 
 public interface IClientService {
-       //This method allows to add client
          boolean addClient(Client client);
          void removeClient(int id);
 
