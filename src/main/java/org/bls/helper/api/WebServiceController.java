@@ -41,7 +41,7 @@ public class WebServiceController {
 	public List<Client> getAllClient(){
 
 		List<Client>   clients=clientService.loadAll();
-
+		System.out.println(clients);
 		return clients;
 	}
 

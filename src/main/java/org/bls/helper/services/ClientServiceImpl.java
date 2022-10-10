@@ -103,6 +103,7 @@ public class ClientServiceImpl implements IClientService {
             inputStream.close();
 
         } catch (IOException e) {
+            System.out.println("List empty");
             e.printStackTrace();
             return null;
         }
