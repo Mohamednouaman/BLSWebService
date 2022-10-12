@@ -1,17 +1,17 @@
-package org.bls.helper.bo;
+package org.bls.helper.entities;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.annotation.Generated;
-import java.util.Date;
+import javax.persistence.*;
 
 @Setter
 @Getter
+@Entity
 public class Client {
 
-
-    private int id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String lastName;
     private String firstName;
     private String birthDate;
@@ -19,8 +19,11 @@ public class Client {
     private String issueDate;
     private String expiryDate;
     private String passportPlace;
+    @Column(unique = true)
     private String email;
     private String password;
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

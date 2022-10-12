@@ -1,17 +1,20 @@
 package org.bls.helper.services;
 
-import org.bls.helper.bo.Client;
+import org.bls.helper.entities.Client;
 
 import java.util.List;
 
 public interface IClientService {
 
-         boolean addClient(Client client);
-         void removeClient(int id);
+         Client addClient(Client client);
 
-         //Client  getClientById(int id);
+         void removeClient(Long id);
+
+         List<Client>  getClientByUserId(Long id);
 
          Client getClientByLastName(String lastName);
+
+         Client getClientByEmail(String email);
 
          List<Client> loadAll();
 }
