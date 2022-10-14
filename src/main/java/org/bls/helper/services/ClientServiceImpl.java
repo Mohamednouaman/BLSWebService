@@ -32,7 +32,7 @@ public class ClientServiceImpl implements IClientService {
 
       Client clientSaved=  clientRepository.save(client);
 
-        return client;
+        return clientSaved;
 
     }
 
@@ -50,6 +50,18 @@ public class ClientServiceImpl implements IClientService {
         if(user==null) return null;
 
        List<Client> clients= clientRepository.getByUser(user);
+        if(CollectionUtils.isEmpty(clients)) return null;
+
+        return clients;
+    }
+
+    @Override
+    public List<Client> getClientByUserEmail(String email) {
+
+        User user=userService.getUserByEmail(email);
+        if(user==null) return null;
+
+        List<Client> clients= clientRepository.getByUser(user);
         if(CollectionUtils.isEmpty(clients)) return null;
 
         return clients;

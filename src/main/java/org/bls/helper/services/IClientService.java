@@ -12,6 +12,8 @@ public interface IClientService {
 
          List<Client>  getClientByUserId(Long id);
 
+         List<Client> getClientByUserEmail(String email);
+
          Client getClientByLastName(String lastName);
 
          Client getClientByEmail(String email);
