@@ -1,14 +1,12 @@
 package org.bls.helper.api;
 
-import java.lang.reflect.Executable;
 import java.util.List;
 
 import org.bls.helper.entities.Client;
-import org.bls.helper.entities.User;
+import org.bls.helper.entities.BLSUser;
 import org.bls.helper.services.IClientService;
 import org.bls.helper.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +41,7 @@ public class WebServiceController {
 	}
 
 	@PostMapping(value = "/helper/adduser",produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<? extends  Object> createUser(@RequestBody User user){
+	public ResponseEntity<? extends  Object> createUser(@RequestBody BLSUser user){
 		try {
 			userService.addUser(user);
 
@@ -69,7 +67,7 @@ public class WebServiceController {
 	@ResponseBody
 	public ResponseEntity<? extends  Object>  getUserByEmail(@PathVariable String email){
 
-		User  user=userService.getUserByEmail(email);
+		BLSUser user=userService.getUserByEmail(email);
          if(user==null){
 			 return 	 ResponseEntity.status(HttpStatus.BAD_REQUEST).body(user);
 		 }
@@ -115,9 +113,9 @@ public class WebServiceController {
 
 	@GetMapping(value="/helper/users/loadAll")
 	@ResponseBody
-	public List<User> getAllUsers(){
+	public List<BLSUser> getAllUsers(){
 
-		List<User>   users=userService.getAllUsers();
+		List<BLSUser>   users=userService.getAllUsers();
 		System.out.println(users);
 		return users;
 	}

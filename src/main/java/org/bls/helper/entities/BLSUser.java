@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Entity
-public class User {
+public class BLSUser {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;

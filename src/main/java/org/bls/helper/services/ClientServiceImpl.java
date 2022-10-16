@@ -1,12 +1,9 @@
 package org.bls.helper.services;
 
-import com.spire.xls.Workbook;
-import com.spire.xls.Worksheet;
-
 
 import org.bls.helper.dao.ClientRepository;
 import org.bls.helper.entities.Client;
-import org.bls.helper.entities.User;
+import org.bls.helper.entities.BLSUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +43,7 @@ public class ClientServiceImpl implements IClientService {
     @Override
     public List<Client> getClientByUserId(Long id) {
 
-        User user=userService.getUserById(id);
+        BLSUser user=userService.getUserById(id);
         if(user==null) return null;
 
        List<Client> clients= clientRepository.getByUser(user);
@@ -58,7 +55,7 @@ public class ClientServiceImpl implements IClientService {
     @Override
     public List<Client> getClientByUserEmail(String email) {
 
-        User user=userService.getUserByEmail(email);
+        BLSUser user=userService.getUserByEmail(email);
         if(user==null) return null;
 
         List<Client> clients= clientRepository.getByUser(user);

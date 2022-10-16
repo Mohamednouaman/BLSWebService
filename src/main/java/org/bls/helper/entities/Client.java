@@ -24,6 +24,6 @@ public class Client {
     private String password;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private BLSUser user;
 
 }

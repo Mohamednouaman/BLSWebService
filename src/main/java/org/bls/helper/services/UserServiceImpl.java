@@ -1,7 +1,7 @@
 package org.bls.helper.services;
 
 import org.bls.helper.dao.UserRepository;
-import org.bls.helper.entities.User;
+import org.bls.helper.entities.BLSUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -14,20 +14,20 @@ public class UserServiceImpl implements IUserService{
 
 
     @Override
-    public User addUser(User user) {
+    public BLSUser addUser(BLSUser user) {
 
         return userRepository.save(user);
     }
 
     @Override
-    public User getUserByEmail(String email) {
-        User user=userRepository.getByEmail(email);
+    public BLSUser getUserByEmail(String email) {
+        BLSUser user=userRepository.getByEmail(email);
         return user;
     }
 
     @Override
-    public User getUserById(Long id) {
-        User user=userRepository.findById(id).get();
+    public BLSUser getUserById(Long id) {
+        BLSUser user=userRepository.findById(id).get();
         return user;
     }
 
@@ -37,9 +37,9 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<BLSUser> getAllUsers() {
 
-        List<User>  allUsers=userRepository.findAll();
+        List<BLSUser>  allUsers=userRepository.findAll();
         if(CollectionUtils.isEmpty(allUsers)) return null;
         return allUsers;
     }
