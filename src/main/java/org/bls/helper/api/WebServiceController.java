@@ -58,7 +58,7 @@ public class WebServiceController {
 	@ResponseBody
 	public Client  getClientByEmail(@PathVariable String email){
 
-		Client  client=clientService.getClientByLastName(email);
+		Client  client=clientService.getClientByEmail(email);
 		
 		return client;
 		
