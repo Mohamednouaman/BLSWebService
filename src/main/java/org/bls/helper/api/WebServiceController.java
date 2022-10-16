@@ -80,10 +80,15 @@ public class WebServiceController {
 	@GetMapping(value="/helper/clients/{userId}")
 	@ResponseBody
 	public ResponseEntity<? extends Object> getClientsOfUser(@PathVariable int userId){
+
+
         Long id=Long.valueOf(userId);
 		List<Client>   clients=null;
 		try {
 			clients=clientService.getClientByUserId(id);
+			if(clients==null){
+				throw new Exception();
+			}
             }catch (Exception e){
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(clients);
 		   }
@@ -94,11 +99,18 @@ public class WebServiceController {
 	@ResponseBody
 	public ResponseEntity<? extends Object> getClientsOfUserV2(@PathVariable String userEmail){
 
-		List<Client>   clients=clientService.getClientByUserEmail(userEmail);
-		if(clients==null)
+		List<Client>   clients=null;
+		try {
+			clients=clientService.getClientByUserEmail(userEmail);
+			if(clients==null){
+				throw new Exception();
+			}
+		}catch (Exception e){
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(clients);
-
+		}
 		return ResponseEntity.status(HttpStatus.OK).body(clients);
+
+
 	}
 
 	@GetMapping(value="/helper/users/loadAll")
