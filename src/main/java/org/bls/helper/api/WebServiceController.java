@@ -119,6 +119,14 @@ public class WebServiceController {
 		System.out.println(users);
 		return users;
 	}
+	@GetMapping(value="/helper/clients/loadAll")
+	@ResponseBody
+	public List<Client> getAllClients(){
+
+		List<Client>   clients=clientService.loadAll();
+
+		return clients;
+	}
 
 	@GetMapping("/helper/removeClient/{id}")
 	public void removeClient(@PathVariable Long id){
