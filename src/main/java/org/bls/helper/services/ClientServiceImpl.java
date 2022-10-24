@@ -53,12 +53,13 @@ public class ClientServiceImpl implements IClientService {
     }
 
     @Override
-    public List<Client> getClientByUserEmail(String email) {
+    public List<Client> getClientByUserEmail(String email) throws Exception {
 
         BLSUser user=userService.getUserByEmail(email);
-        if(user==null) return null;
+
 
         List<Client> clients= clientRepository.getByUser(user);
+
         if(CollectionUtils.isEmpty(clients)) return null;
 
         return clients;

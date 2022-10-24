@@ -12,7 +12,7 @@ public interface IClientService {
 
          List<Client>  getClientByUserId(Long id);
 
-         List<Client> getClientByUserEmail(String email);
+         List<Client> getClientByUserEmail(String email) throws Exception;
 
          Client getClientByLastName(String lastName);
 

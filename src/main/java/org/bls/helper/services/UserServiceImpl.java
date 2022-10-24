@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+
 @Service
-public class UserServiceImpl implements IUserService{
+public class UserServiceImpl implements IUserService {
     @Autowired
     private UserRepository userRepository;
 
@@ -20,27 +21,33 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public BLSUser getUserByEmail(String email) {
-        BLSUser user=userRepository.getByEmail(email);
+    public BLSUser getUserByEmail(String email) throws Exception {
+
+        BLSUser user = userRepository.getByEmail(email);
+        if (user == null) {
+
+            throw new Exception("User not found");
+
+        }
         return user;
     }
 
     @Override
     public BLSUser getUserById(Long id) {
-        BLSUser user=userRepository.findById(id).get();
+        BLSUser user = userRepository.findById(id).get();
         return user;
     }
 
     @Override
     public void removeUser(Long id) {
-         userRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 
     @Override
     public List<BLSUser> getAllUsers() {
 
-        List<BLSUser>  allUsers=userRepository.findAll();
-        if(CollectionUtils.isEmpty(allUsers)) return null;
+        List<BLSUser> allUsers = userRepository.findAll();
+        if (CollectionUtils.isEmpty(allUsers)) return null;
         return allUsers;
     }
 }
