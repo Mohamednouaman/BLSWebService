@@ -101,10 +101,10 @@ public class WebServiceController {
 		try {
 			clients=clientService.getClientByUserEmail(userEmail);
 			if(clients==null){
-				throw new Exception();
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(clients);
 			}
 		}catch (Exception e){
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(clients);
+			ResponseEntity.status(404).body(clients);
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(clients);
 
