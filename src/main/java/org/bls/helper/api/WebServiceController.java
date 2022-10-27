@@ -117,11 +117,15 @@ public class WebServiceController {
 
     @GetMapping(value = "/helper/users/loadAll")
     @ResponseBody
-    public List<BLSUser> getAllUsers() {
+    public ResponseEntity<List<BLSUser>>  getAllUsers() {
 
         List<BLSUser> users = userService.getAllUsers();
-        System.out.println(users);
-        return users;
+        if(users==null){
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(users);
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 
     @GetMapping(value = "/helper/clients/loadAll")
@@ -144,6 +148,13 @@ public class WebServiceController {
     public void removeUser(@PathVariable Long id) {
 
         userService.removeUser(id);
+
+    }
+
+    @GetMapping("/helper/approveEmployee/{id}")
+    public void changeEmployeeState(@PathVariable Long id) {
+
+        userService.changeUserState(id);
 
     }
 

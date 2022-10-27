@@ -18,6 +18,10 @@ public class BLSUser {
     @Column(unique = true)
     private String email;
     private String password;
+    @Column(columnDefinition = "boolean default false")
+    private boolean state;
+    @Column(columnDefinition = "boolean default false")
+    private boolean isAdmin;
 
 
 

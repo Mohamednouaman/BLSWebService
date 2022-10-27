@@ -13,5 +13,5 @@ public interface IUserService {
     List<BLSUser> getAllUsers();
 
 
-
+    void changeUserState(Long id);
 }

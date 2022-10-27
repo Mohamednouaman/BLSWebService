@@ -4,11 +4,13 @@ import org.bls.helper.dao.UserRepository;
 import org.bls.helper.entities.BLSUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements IUserService {
     @Autowired
     private UserRepository userRepository;
@@ -49,5 +51,12 @@ public class UserServiceImpl implements IUserService {
         List<BLSUser> allUsers = userRepository.findAll();
         if (CollectionUtils.isEmpty(allUsers)) return null;
         return allUsers;
+    }
+
+    @Override
+    public void changeUserState(Long id) {
+
+        userRepository.updateUserState(id);
+
     }
 }
