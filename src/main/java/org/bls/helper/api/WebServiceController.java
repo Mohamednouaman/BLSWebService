@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController()
 @RequestMapping("/api")
-@CrossOrigin(origins = "https://employeemanagement-orpin.vercel.app/", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class WebServiceController {
 
     @Autowired
