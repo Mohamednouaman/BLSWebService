@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController()
 @RequestMapping("/api")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "https://employeemanagement-orpin.vercel.app/", allowedHeaders = "*")
 public class WebServiceController {
 
     @Autowired
@@ -146,8 +146,9 @@ public class WebServiceController {
 
     @GetMapping("/helper/removeUser/{id}")
     public void removeUser(@PathVariable Long id) {
-
+       clientService.removeClients(id);
         userService.removeUser(id);
+        System.out.println("User removed successfully");
 
     }
 

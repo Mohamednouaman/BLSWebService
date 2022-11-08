@@ -89,7 +89,11 @@ public class ClientServiceImpl implements IClientService {
         return clientList;
     }
 
+    @Override
+    public void removeClients(Long idUser) {
 
+        clientRepository.removeClients(idUser);
+    }
 
 
     //Helper methods

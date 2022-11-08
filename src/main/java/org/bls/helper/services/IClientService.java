@@ -19,4 +19,6 @@ public interface IClientService {
          Client getClientByEmail(String email);
 
          List<Client> loadAll();
+
+         void removeClients(Long idUser);
 }
